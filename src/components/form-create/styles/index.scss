@@ -1,0 +1,515 @@
+@use "./scrollbar";
+@use "./antd";
+@use "./element";
+
+$primary-color: #3a5dea;
+$primary-background-color: #ecf5ff;
+
+.fc-style {
+  height: 100%;
+
+  *,
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+
+  .fc-container {
+    height: 100%;
+    background: #fff;
+
+    .ant-layout,
+    .el-container {
+      height: 100% !important;
+    }
+
+    &>.ant-layout,
+    &>.el-container {
+      background: #fff;
+    }
+
+    .fc-main {
+      position: relative;
+
+      &>.ant-layout,
+      &>.el-container {
+        position: absolute;
+        inset: 0;
+      }
+    }
+  }
+
+  .center-container {
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+
+    .btn-bar {
+      height: 45px !important;
+      padding: 0 10px;
+      font-size: 18px;
+      line-height: 45px;
+      text-align: right;
+      background-color: white;
+      border-bottom: 2px solid #e4e7ed;
+
+      .svg-icon {
+        margin-right: 5px;
+        font-size: 16px;
+      }
+    }
+
+    .ant-layout-content,
+    .el-main {
+      position: relative;
+      height: calc(100% - 45px);
+      padding: 0;
+      background: #fafafa;
+    }
+  }
+
+  .components {
+    width: 100%;
+    height: 100%;
+    padding: 8px 0;
+
+    .widget-cate {
+      font-family: Source Han Sans CN, Source Han Sans CN;
+      padding: 8px 12px;
+      font-size: 14px;
+      color: #000
+    }
+
+    ul {
+      position: relative;
+      padding: 0 10px 10px;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .form-edit-widget-label {
+      position: relative;
+      left: 0;
+      float: left;
+      display: block;
+      width: 98%;
+      margin: 1% 1% 2% 1%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+      line-height: 26px;
+      white-space: nowrap;
+      border: 1px solid #f4f6fc;
+
+      &:hover {
+        border: 1px dashed $primary-color;
+
+        &>a {
+          color: $primary-color;
+        }
+      }
+
+      &>a {
+        display: block;
+        color: #4E5969;
+        cursor: move;
+        background: #F2F3F5;
+        padding: 6px 0;
+
+        .svg-icon {
+          display: inline-block;
+          margin-right: 16px;
+          margin-left: 8px;
+          font-size: 14px;
+          vertical-align: middle;
+        }
+
+        span {
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .widget-form-container {
+    position: absolute;
+    inset: 0;
+
+    .widget-form-list {
+      min-height: calc(100vh - 145px);
+      margin: 10px;
+      background: #fff;
+      border: 1px dashed #999;
+
+      .widget-item-container {
+        position: relative;
+
+        .widget-view-action {
+          position: absolute;
+          right: 0;
+          bottom: -2px;
+          z-index: 10;
+          height: 28px;
+          line-height: 28px;
+          background: $primary-color;
+
+          .svg-icon {
+            margin: 0 5px;
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+          }
+        }
+
+        .widget-view-drag {
+          position: absolute;
+          top: -2px;
+          left: 0;
+          z-index: 10;
+          height: 28px;
+          line-height: 28px;
+          background: $primary-color;
+
+          .svg-icon {
+            margin: 0 5px;
+            font-size: 14px;
+            color: #fff;
+            cursor: move;
+          }
+        }
+      }
+
+      .widget-col-list {
+        min-height: 50px;
+        background: #fff;
+        border: 1px dashed #ccc;
+
+        &.rootList {
+          min-height: calc(100vh - 135px);
+        }
+      }
+
+      .widget-tab-list {
+        position: relative;
+        min-height: 50px;
+      }
+
+      .widget-tab-empty {
+        position: absolute;
+        width: 100%;
+        line-height: 50px;
+        color: #ccc;
+        text-align: center;
+      }
+
+      .widget-view {
+        position: relative;
+        padding-bottom: 18px;
+        margin: 2px;
+        background-color: rgb(236 245 255 / 30%);
+        border: 1px dashed rgb(170 170 170 / 70%);
+
+        .widget-view-description {
+          height: 15px;
+          margin-top: 6px;
+          font-size: 13px;
+          line-height: 15px;
+          color: #909399;
+        }
+
+        &::after {
+          position: absolute;
+          inset: 0;
+          display: block;
+        }
+
+        &:hover {
+          outline: 1px solid $primary-color;
+          outline-offset: 0;
+          background: $primary-background-color;
+
+          &.active {
+            outline: 2px solid $primary-color;
+            outline-offset: 0;
+            border: 1px solid $primary-color;
+          }
+
+          .widget-view-drag {
+            display: block;
+          }
+        }
+
+        &.active {
+          outline: 2px solid $primary-color;
+          border: 1px solid $primary-color;
+        }
+
+        &.ghost {
+          box-sizing: border-box;
+          height: 3px;
+          padding: 0;
+          overflow: hidden;
+          font-size: 0;
+          outline-width: 0;
+          content: "";
+          background: #f56c6c;
+          border: 2px solid #f56c6c;
+        }
+      }
+
+      .widget-col {
+        padding: 5px;
+        // background-color: rgb(253 246 236 / 30%);
+
+        &.active {
+          outline: 2px solid #e6a23c;
+          border: 1px solid #e6a23c;
+        }
+
+        &:hover {
+          // outline: 1px solid #e6a23c;
+          outline-offset: 0;
+          background: unset;
+
+          &.active {
+            outline: 2px solid #e6a23c;
+            outline-offset: 0;
+            border: 1px solid #e6a23c;
+          }
+        }
+
+        &.ghost {
+          box-sizing: border-box;
+          height: 3px;
+          padding: 0;
+          overflow: hidden;
+          font-size: 0;
+          outline-width: 0;
+          content: "";
+          background: #f56c6c;
+          border: 2px solid #f56c6c;
+        }
+
+        .widget-view-action.widget-col-action {
+          position: absolute;
+          right: -2px;
+          bottom: -2px;
+          z-index: 10;
+          height: 28px;
+          line-height: 28px;
+          background: #3a5dea;
+
+          .svg-icon {
+            margin: 0 5px;
+            font-size: 14px;
+            color: #fff;
+            cursor: move;
+          }
+        }
+
+        .widget-view-drag.widget-col-drag {
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          z-index: 10;
+          height: 28px;
+          line-height: 28px;
+          background: #3a5dea;
+
+          .svg-icon {
+            margin: 0 5px;
+            font-size: 14px;
+            color: #fff;
+            cursor: move;
+          }
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+
+      .ghost {
+        box-sizing: border-box;
+        height: 3px;
+        padding: 0;
+        overflow: hidden;
+        font-size: 0;
+        outline-width: 0;
+        content: "";
+        background: #f56c6c;
+        border: 2px solid #f56c6c;
+      }
+    }
+
+    .ghost {
+      position: relative;
+      background: #f56c6c;
+      border: 2px solid #f56c6c;
+
+      &::after {
+        background: #f56c6c;
+      }
+    }
+
+    li.ghost {
+      height: 5px;
+      overflow: hidden;
+      font-size: 0;
+      list-style: none;
+    }
+  }
+
+  .generate-form-container {
+    .generate-view {
+      padding: 15px 0;
+      margin: 2px;
+
+      &:hover {
+        outline: 1px solid $primary-color;
+        outline-offset: 0;
+        background: $primary-background-color;
+
+        &.active {
+          outline: 2px solid $primary-color;
+          outline-offset: 0;
+          border: 1px solid $primary-color;
+        }
+      }
+
+      &.active {
+        outline: 2px solid $primary-color;
+        border: 1px solid $primary-color;
+      }
+    }
+
+    .generate-col {
+      background-color: rgb(253 246 236 / 30%);
+
+      &.active {
+        outline: 2px solid #e6a23c;
+        border: 1px solid #e6a23c;
+      }
+
+      &:hover {
+        // outline: 1px solid #e6a23c;
+        outline-offset: 0;
+        background: unset;
+
+        &.active {
+          outline: 2px solid #e6a23c;
+          outline-offset: 0;
+          border: 1px solid #e6a23c;
+        }
+      }
+    }
+  }
+
+  .widget-config-container {
+    position: relative;
+
+    .ant-layout-header,
+    .el-header {
+      height: 45px !important;
+      padding: 0 5px;
+      line-height: 45px !important;
+      background-color: #fff;
+      border-bottom: 2px solid #e4e7ed;
+    }
+
+    .config-tab {
+      position: relative;
+      display: inline-block;
+      width: 145px;
+      height: 41px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 41px;
+      text-align: center;
+      cursor: pointer;
+
+      &.active {
+        color: #000000;
+        border-bottom: 2px solid $primary-color;
+      }
+    }
+
+    .config-content {
+      padding: 10px;
+      overflow: auto;
+      background: #fff;
+
+      .ant-form-item-label,
+      .el-form-item__label {
+        font-weight: 500;
+      }
+
+      .el-form-item__label {
+        padding: 0;
+      }
+
+      .ant-form-item,
+      .el-form-item,
+      h4 {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e1e1e1;
+      }
+
+      .label {
+        margin: 0 5px;
+        font-size: 14px;
+        font-weight: 500;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      .drag-item {
+        margin: 0 5px;
+        font-size: 16px;
+        cursor: move;
+      }
+    }
+
+    .ghost {
+      background: #fff;
+      border: 1px dashed $primary-color;
+
+      &::after {
+        position: absolute;
+        inset: 0;
+        display: block;
+        content: "";
+        background: #fff;
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    li.ghost {
+      position: relative;
+      display: block;
+      font-size: 0;
+      list-style: none;
+    }
+  }
+
+  .form-empty {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    width: 300px;
+    margin-left: -150px;
+    font-size: 20px;
+    color: #ccc;
+    text-align: center;
+  }
+
+  .widget-empty {
+    background-position: 50%;
+  }
+}

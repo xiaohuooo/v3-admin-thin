@@ -1,0 +1,27 @@
+import type { App } from "vue";
+import ElDesignForm from "./core/element/ElDesignForm.vue";
+import ElGenerateForm from "./core/element/ElGenerateForm.vue";
+
+import "./styles/index.scss";
+
+ElDesignForm.install = (app: App) => {
+  app.component(ElDesignForm.name, ElDesignForm);
+};
+
+ElGenerateForm.install = (app: App) => {
+  app.component(ElGenerateForm.name, ElGenerateForm);
+};
+
+const components = [ElDesignForm, ElGenerateForm];
+
+const install = (app: App) => {
+  components.forEach(component => app.component(component.name, component));
+};
+
+export { install, ElDesignForm, ElGenerateForm };
+
+export default {
+  install,
+  ElDesignForm,
+  ElGenerateForm
+};
