@@ -21,14 +21,10 @@ jobs:
       - uses: actions/checkout@v4
  
       # 2. 安装 Node.js 环境
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20  # 指定 Node.js 版本为 20
-          cache: pnpm        # 启用 npm 缓存，加快安装速度
+      - uses: pnpm/action-setup@v3
  
       # 3. 安装依赖（等价于 npm install，但 npm ci 更快、更稳定）
-      - run: npm install -g pnpm
-      - run: pnpm ci
+      - run: pnpm install
  
       # 4. 构建打包（Vite 会把代码打包到 dist 文件夹）
       - run: pnpm run build
