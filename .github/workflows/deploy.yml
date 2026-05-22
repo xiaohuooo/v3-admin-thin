@@ -22,6 +22,8 @@ jobs:
  
       # 2. 安装 Node.js 环境
       - uses: pnpm/action-setup@v3
+        with:
+          version: 10  # 指定 pnpm 版本，也可以不写 version 使用最新版
  
       # 3. 安装依赖（等价于 npm install，但 npm ci 更快、更稳定）
       - run: pnpm install
