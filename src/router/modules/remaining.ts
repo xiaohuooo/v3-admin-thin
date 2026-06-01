@@ -10,6 +10,15 @@ export default [
       showLink: false
     }
   },
+  {
+    path:"/form-create",
+    name:"FormCreate",
+    component: () => import("@/components/form-create").then((module) => module.ElDesignForm),
+    meta: {
+      title: "表单创建",
+      showLink: false
+    }
+  },
   // 全屏403（无权访问）页面
   {
     path: "/access-denied",

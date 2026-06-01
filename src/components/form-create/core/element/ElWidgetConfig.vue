@@ -4,7 +4,7 @@
       <template #label>
         <div class="w-[calc(var(--el-aside-width)-25px)] flex justify-between">
           <span>字段标识</span>
-          <span class="bg-gray-50 px-[5px]">{{ labelName(data.type) }}</span>
+          <span class="px-[5px]">{{ labelName(data.type) }}</span>
         </div>
       </template>
       <el-input disabled :value="data.model" />

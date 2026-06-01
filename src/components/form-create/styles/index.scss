@@ -16,7 +16,7 @@ $primary-background-color: #ecf5ff;
 
   .fc-container {
     height: 100%;
-    background: #fff;
+    background: var(--el-fill-color-blank);
 
     .ant-layout,
     .el-container {
@@ -25,7 +25,7 @@ $primary-background-color: #ecf5ff;
 
     &>.ant-layout,
     &>.el-container {
-      background: #fff;
+      background: var(--el-fill-color-blank);
     }
 
     .fc-main {
@@ -49,7 +49,7 @@ $primary-background-color: #ecf5ff;
       font-size: 18px;
       line-height: 45px;
       text-align: right;
-      background-color: white;
+      background: var(--el-fill-color-blank);
       border-bottom: 2px solid #e4e7ed;
 
       .svg-icon {
@@ -63,7 +63,7 @@ $primary-background-color: #ecf5ff;
       position: relative;
       height: calc(100% - 45px);
       padding: 0;
-      background: #fafafa;
+      background: var(--el-fill-color-blank);
     }
   }
 
@@ -73,10 +73,10 @@ $primary-background-color: #ecf5ff;
     padding: 8px 0;
 
     .widget-cate {
-      font-family: Source Han Sans CN, Source Han Sans CN;
+      font-family: Source Han Sans CN, sans-serif;
       padding: 8px 12px;
       font-size: 14px;
-      color: #000
+      // color: #000
     }
 
     ul {
@@ -112,7 +112,7 @@ $primary-background-color: #ecf5ff;
         display: block;
         color: #4E5969;
         cursor: move;
-        background: #F2F3F5;
+        background: var(--el-fill-color-blank);
         padding: 6px 0;
 
         .svg-icon {
@@ -138,7 +138,7 @@ $primary-background-color: #ecf5ff;
     .widget-form-list {
       min-height: calc(100vh - 145px);
       margin: 10px;
-      background: #fff;
+      background: var(--el-fill-color-blank);
       border: 1px dashed #999;
 
       .widget-item-container {
@@ -181,7 +181,7 @@ $primary-background-color: #ecf5ff;
 
       .widget-col-list {
         min-height: 50px;
-        background: #fff;
+        background: var(--el-fill-color-blank);
         border: 1px dashed #ccc;
 
         &.rootList {
@@ -413,7 +413,7 @@ $primary-background-color: #ecf5ff;
       height: 45px !important;
       padding: 0 5px;
       line-height: 45px !important;
-      background-color: #fff;
+      background: var(--el-fill-color-blank);
       border-bottom: 2px solid #e4e7ed;
     }
 
@@ -429,7 +429,7 @@ $primary-background-color: #ecf5ff;
       cursor: pointer;
 
       &.active {
-        color: #000000;
+        // color: #000000;
         border-bottom: 2px solid $primary-color;
       }
     }
@@ -437,7 +437,7 @@ $primary-background-color: #ecf5ff;
     .config-content {
       padding: 10px;
       overflow: auto;
-      background: #fff;
+      background: var(--el-fill-color-blank);
 
       .ant-form-item-label,
       .el-form-item__label {
@@ -473,7 +473,7 @@ $primary-background-color: #ecf5ff;
     }
 
     .ghost {
-      background: #fff;
+      background: var(--el-fill-color-blank);
       border: 1px dashed $primary-color;
 
       &::after {
@@ -481,7 +481,7 @@ $primary-background-color: #ecf5ff;
         inset: 0;
         display: block;
         content: "";
-        background: #fff;
+        background: var(--el-fill-color-blank);
       }
     }
 

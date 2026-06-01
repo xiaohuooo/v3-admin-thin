@@ -127,7 +127,7 @@ const vUnvailableClick = {
   width: 100%;
   border: 1px solid #e4e7ed;
   border-radius: 4px;
-  background-color: #f5f7fa;
+  // background-color: #f5f7fa;
   line-height: 1.5;
   display: inline-flex;
   gap: 10px;
